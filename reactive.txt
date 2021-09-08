@@ -1,0 +1,41 @@
+Today we are going to learn about the reactive web applications. This session you will know how to build reactive web applications using Spring Boot, Project Reactor and WebFlux.
+This is going to be easy topic for us as we already have Java and Spring Boot knowledge.
+
+Reactive System ?
+Reactive programming has been around for some time. Its gaining higher interest during the last couple of years. The reason for this relates to the fact that traditional imperative programming has some limitations when it comes to coping with the demands of today, where applications need to have high availability and provide low response times also during high load. How is this possible ? Because of the Reactive architecture pattern which is mainly loosely coupled, flexible, scalable and built to handle failure.
+
+Traits of Reactive System
+
+Responsiveness: Reactive systems should respond quickly to any user input. Helps to optimize all other parts of the system from data collection to user experience.
+
+Resilience: Reactive systems should be designed to anticipate system failures. Reactive systems expect that components will fail eventually and design loosely-coupled systems that can remain active even if several individual parts stop working.
+
+Elasticity: Reactive systems should adapt to the size of the workload by scaling up or down to meet demands. Many reactive systems will also use predictive scaling to anticipate and prepare for sudden shifts. The key to implementing elasticity is to remove any bottlenecks and build systems that can replicate components as required.
+
+Message-driven communication: All components of a reactive system are loosely coupled with hard boundaries between each. Your system should communicate across these boundaries with explicit message passing.These messages keep different components informed about failures or success.
+
+In short, reactive systems use loosely coupled, unblocked components to increase performance, user experience, and error-handling.
+
+Spring Webflux :
+
+Spring WebFlux is a fully non-blocking, annotation-based web framework built on Project Reactor that makes it possible to build reactive applications on the HTTP layer. WebFlux uses a new router functions feature to apply functional programming to the web layer and bypass declarative controllers and RequestMappings. WebFlux requires you to import Reactor as a core dependency.
+
+Non-blocking threads: Concurrent threads that complete their designated task without waiting for previous tasks to be completed.
+
+Reactive Stream API: A standardized tool that includes options for asynchronous stream processing with non-blocking backpressure.
+
+Note : Backpressure is a way for data endpoints to signal to the data producer that it is receiving too much data. This allows for better flow management and distribution as it prevents individual components from getting overworked.
+
+Asynchronous data processing: When data is processed in the background and the user can continue using normal app functionality without interruption.
+
+
+Reactive Stack : It contains the following elements.
+
+Blocking vs Non Blocking - 
+
+Block Processing Request - As you can see the design is what we have in our applications like Presentation layer and DB layer or API layer. What happens when we get a request? A servlet thread is created and that request is blocked unless the worker threads complete the requested data then the thread is unblocked. Imagine for some requests it takes some time to get the data from the DB layer and what next ? the thread is blocked. So now what happened to performance of the application ? Then we scale i.e horizonatally. But the question is - Is the application working as we want?
+
+Lets jump into non- blocking request processing that we get with Spring Webflux. You can see in the diagram that its based on events. When a request comes in an Event is generated with a callback with a fixed number of threads and that calls the DB once the request is completed the data is sent and the callback is successful.
+
+Kind of looks like the same but here the event works on the signals which avoids the blocking of the threads. We will get this clear in the demo.
+
